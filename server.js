@@ -1,12 +1,20 @@
+import 'dotenv/config'
 import createError from 'http-errors'
+import session from 'express-session'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import logger from 'morgan'
-
+import methodOverride from 'method-override'
+import passport from 'passport'
 // import routers
 import { router as indexRouter } from './routes/index.js'
 import { router as usersRouter } from './routes/users.js'
+import { router as authRouter } from './routes/auth.js'
+
+
+import('./config/database.js')
+import('./config/passport.js')
 
 // set up app
 const app = express()
@@ -23,6 +31,18 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: 'lax',
+    }
+  })
+)
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
@@ -31,6 +51,7 @@ app.use(
 // mounted routers
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
+app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
