@@ -43,11 +43,26 @@ function deleteJoke (req, res) {
   })
 }
 
+function edit (req, res) {
+  console.log('edit joke')
+  Joke.findById(req.params.id, function (error, joke) {
+      res.render('jokes/edit', {joke})
+  })
+}
+
+function update (req, res) {
+  Joke.findByIdAndUpdate(req.params.id,req.body,function() {
+    res.redirect(`/jokes/${req.params.id}`)
+  })
+}
+
 export {
   index,
   newJoke as new,
   create,
   show,
   createComment,
-  deleteJoke as delete
+  deleteJoke as delete,
+  edit,
+  update
 }
