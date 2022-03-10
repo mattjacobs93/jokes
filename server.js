@@ -48,6 +48,8 @@ app.use(
   )
 )
 
+app.use(methodOverride('_method'))
+
 // mounted routers
 app.use('/', indexRouter)
 app.use('/jokes', jokesRouter)

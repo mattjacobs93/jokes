@@ -37,11 +37,17 @@ function createComment (req, res) {
 
 }
 
+function deleteJoke (req, res) {
+  Joke.findByIdAndDelete(req.params.id, function (){
+    res.redirect('/jokes')
+  })
+}
 
 export {
   index,
   newJoke as new,
   create,
   show,
-  createComment
+  createComment,
+  deleteJoke as delete
 }

@@ -11,6 +11,8 @@ router.get('/:id', jokesCtrl.show)
 router.post('/', jokesCtrl.create)
 router.post('/:id/comments',jokesCtrl.createComment)
 
+router.delete('/:id', jokesCtrl.delete)
+
 export {
   router
 }
