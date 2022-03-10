@@ -1,4 +1,5 @@
 import {Joke} from '../models/joke.js'
+import * as commentsFile from '../models/comment.js' 
 
 function index (req,res) {
   //console.log('sanity check index ctrl')
@@ -56,6 +57,18 @@ function update (req, res) {
   })
 }
 
+function deleteComment (req, res) {
+  console.log('delete comment', req.params)
+   Joke.findById(req.params.jokeId, function (error, joke) {
+     joke.comments = joke.comments.filter(comment=>!comment._id.equals(req.params.id))
+     joke.save()
+   })
+
+  commentsFile.Comment.findByIdAndDelete(req.params.id, function (error) {
+    res.redirect(`/jokes/${req.params.jokeId}`)
+  })
+}
+
 export {
   index,
   newJoke as new,
@@ -64,5 +77,6 @@ export {
   createComment,
   deleteJoke as delete,
   edit,
-  update
+  update,
+  deleteComment,
 }

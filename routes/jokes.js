@@ -13,6 +13,7 @@ router.post('/', jokesCtrl.create)
 router.post('/:id/comments',jokesCtrl.createComment)
 
 router.delete('/:id', jokesCtrl.delete)
+router.delete('/:jokeId/comments/:id', jokesCtrl.deleteComment)
 
 router.put('/:id', jokesCtrl.update)
 

@@ -35,7 +35,10 @@
   <ul>
   <%joke.comments.forEach(comment => {%>
     <li>
-      <%=comment.text%>
+      <%=comment.text%> <a href=""">edit</a> 
+      <form id="delete-comment-form" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST" style="display:inline">
+        <a href="#" onclick="document.getElementById('delete-comment-form').submit()">delete</a>
+      </form>
     </li>   
   <%})%>
   </ul>
