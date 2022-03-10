@@ -9,7 +9,7 @@ import methodOverride from 'method-override'
 import passport from 'passport'
 // import routers
 import { router as indexRouter } from './routes/index.js'
-import { router as usersRouter } from './routes/users.js'
+import { router as jokesRouter } from './routes/jokes.js'
 import { router as authRouter } from './routes/auth.js'
 
 
@@ -50,7 +50,7 @@ app.use(
 
 // mounted routers
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/jokes', jokesRouter)
 app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler
