@@ -7,8 +7,13 @@
   <title>Document</title>
 </head>
 <body>
+  <ul>
+    <%let i = 1%>
   <%jokes.forEach(joke => {%>
-    <a href="jokes/<%=joke._id%>"><%=joke.title%></a>
+    <li>
+      <a href="jokes/<%=joke._id%>"><%= `${i++}. ${joke.title}`%></a>
+    </li>
   <%})%>
+  </ul>
 </body>
 </html>

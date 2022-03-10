@@ -27,10 +27,21 @@ function show(req, res) {
   })
 }
 
+function createComment (req, res) {
+  Joke.findById(req.params.id, function(error,joke) {
+    joke.comments.push(req.body)
+    joke.save(function (error) {
+      res.redirect(`/jokes/${joke._id}`)
+    })
+  })
+
+}
+
 
 export {
   index,
   newJoke as new,
   create,
-  show
+  show,
+  createComment
 }

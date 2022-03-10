@@ -7,8 +7,30 @@
   <title>Document</title>
 </head>
 <body>
+  <nav>
+    
+  </nav>
   Title: <%=joke.title%>
   <br>
   Text: <%=joke.text%>
+  <br>
+  <br>
+  <form action="/jokes/<%=joke._id%>/comments" method="POST">
+    <label for="text"> Add Comment
+      <br>
+      <textarea name="text" id="new-comment-text" cols="50" rows="1" placeholder="new comment..."></textarea>
+    </label>
+    <br>
+  <button type="submit">Submit</button>
+</form>
+  <br>
+  Comments:
+  <ul>
+  <%joke.comments.forEach(comment => {%>
+    <li>
+      <%=comment.text%>
+    </li>   
+  <%})%>
+  </ul>
 </body>
 </html>

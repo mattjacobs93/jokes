@@ -9,6 +9,7 @@ router.get('/new', jokesCtrl.new)
 router.get('/:id', jokesCtrl.show)
 
 router.post('/', jokesCtrl.create)
+router.post('/:id/comments',jokesCtrl.createComment)
 
 export {
   router
