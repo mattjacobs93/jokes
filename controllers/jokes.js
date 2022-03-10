@@ -21,9 +21,16 @@ function create (req, res) {
   })
 }
 
+function show(req, res) {
+  Joke.findById(req.params.id, function (error, joke) {
+    res.render('jokes/show', {joke})
+  })
+}
+
 
 export {
   index,
   newJoke as new,
-  create
+  create,
+  show
 }

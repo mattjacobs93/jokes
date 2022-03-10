@@ -8,11 +8,18 @@
 </head>
 <body>
   <form action="/jokes" method="POST">
+    <label for="title">
+      Enter title for joke: 
+      <input type="text" name="title" placeholder="title">
+    </label>
+    <br>
+    <br>
     <label for="text">Please type your joke here:</label>
     <br>
     <textarea name="text" placeholder="type joke here...">
 
     </textarea>
+    <br>
     <br>
     <button type="submit">submit</button>
   </form>
