@@ -61,13 +61,35 @@ function deleteComment (req, res) {
   console.log('delete comment', req.params)
    Joke.findById(req.params.jokeId, function (error, joke) {
      joke.comments = joke.comments.filter(comment=>!comment._id.equals(req.params.id))
-     joke.save()
+     joke.save(function (error) {
+      commentsFile.Comment.findByIdAndDelete(req.params.id, function (error) {
+        res.redirect(`/jokes/${req.params.jokeId}`)
+      })
+     })
    })
+}
 
-  commentsFile.Comment.findByIdAndDelete(req.params.id, function (error) {
+
+function editComment (req, res) {
+  Joke.findById(req.params.jokeId, function (error, joke) {
+    const comment = joke.comments.filter(comment=>comment._id.equals(req.params.id))[0]
+    res.render('jokes/editComment', {joke, comment})
+  })
+}
+
+function updateComment (req,res) {
+  Joke.findById(req.params.jokeId, function (error, joke) {
+    joke.comments.forEach(comment => {
+      if (comment._id.equals(req.params.id)) {
+        comment.text = req.body.text
+        joke.save()
+      }
+    })
     res.redirect(`/jokes/${req.params.jokeId}`)
   })
 }
+
+
 
 export {
   index,
@@ -79,4 +101,6 @@ export {
   edit,
   update,
   deleteComment,
+  updateComment,
+  editComment,
 }
