@@ -2,11 +2,13 @@
 </head>
 <body>
   <%- include('../partials/nav') %>
+    
     <div class="joke-list">
-      <ul>
+      <h1 style="text-decoration:underline;">Joke List</h1>
+      <ul class="ul-joke"> 
         <%let i = 1%>
       <%jokes.forEach(joke => {%>
-       <li>
+       <li class="'li-joke">
           <a href="jokes/<%=joke._id%>"><%= `${i++}. ${joke.title}`%></a>
        </li>
       <%})%>

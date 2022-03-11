@@ -213,3 +213,8 @@ nav {
 .new-profile-div {
   grid-area: page;
 }
+
+.ul-joke {
+  list-style-type: none;
+  font-size: 2rem;
+}
