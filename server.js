@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url'
 import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
-
+import { isLoggedIn } from './middleware/middleware.js'
 
 import('./config/database.js')
 import('./config/passport.js')
@@ -58,9 +58,9 @@ app.use(methodOverride('_method'))
 
 // mounted routers
 app.use('/', indexRouter)
-app.use('/jokes', jokesRouter)
+app.use('/jokes',isLoggedIn, jokesRouter)
 app.use('/auth', authRouter)
-app.use('/profiles', profilesRouter)
+app.use('/profiles', isLoggedIn, profilesRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
