@@ -195,3 +195,17 @@ nav {
   height: 30vh;
   width: 30vw;
 }
+
+.login-div {
+  grid-area: page;
+}
+
+.login-button {
+  height: 9vh;
+  width: 15vw;
+}
+
+.comment-edit-div {
+  display: grid;
+  grid-area: page;
+}

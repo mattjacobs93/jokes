@@ -1,35 +1,70 @@
 import {Joke} from '../models/joke.js'
+import { User } from '../models/user.js'
+import { Profile } from '../models/profile.js'
 import * as commentsFile from '../models/comment.js' 
 
+
 function index (req,res) {
-  //console.log('sanity check index ctrl')
-  Joke.find({}, function (error,jokes) {
-    res.render('jokes/index', {
-      jokes,
-      title: 'All Jokes',
-    })
+  let userID
+
+  try {
+    userID = req.session.passport.user
+  } catch (error) {
+    res.redirect('/')
+  }
+
+  User.findById(userID,function (error, user) {    
+    Joke.find({}, function (error,jokes) {
+      res.render('jokes/index', {
+        jokes,
+        title: 'All Jokes',
+        user,
+      })
+    }) 
   })
 }
 
 function newJoke (req, res) {
-  res.render('jokes/new', {
-    title: 'New Joke'
+  let userID
+  
+  try {
+    userID = req.session.passport.user
+  } catch (error) {
+
+    res.redirect('/')
+  }
+
+  User.findById(userID,function (error, user) {    
+    res.render('jokes/new', {
+      title: 'New Joke',
+      user,
+    })
   })
 }
 
 function create (req, res) {
-  //req.body.author = 'Joe'
-  console.log(req.body)
   Joke.create(req.body,function(error){
     res.redirect('/jokes')
   })
 }
 
 function show(req, res) {
-  Joke.findById(req.params.id, function (error, joke) {
-    res.render('jokes/show', {
-      joke,
-      title: 'Joke', 
+  let userID
+  
+  try {
+    userID = req.session.passport.user
+  } catch (error) {
+
+    res.redirect('/')
+  }
+
+  User.findById(userID, function (error,user) {
+    Joke.findById(req.params.id, function (error, joke) {
+      res.render('jokes/show', {
+        joke,
+        title: 'Joke', 
+        user,
+      })
     })
   })
 }
@@ -51,11 +86,22 @@ function deleteJoke (req, res) {
 }
 
 function edit (req, res) {
-  Joke.findById(req.params.id, function (error, joke) {
+  let userID
+  
+  try {
+    userID = req.session.passport.user
+  } catch (error) {
+
+    res.redirect('/')
+  }
+  User.findById(userID, function (error, user) {
+    Joke.findById(req.params.id, function (error, joke) {
       res.render('jokes/edit', {
         joke,
         title: 'Edit Joke',
+        user,
       })
+    })
   })
 }
 
@@ -78,12 +124,24 @@ function deleteComment (req, res) {
 
 
 function editComment (req, res) {
-  Joke.findById(req.params.jokeId, function (error, joke) {
-    const comment = joke.comments.filter(comment=>comment._id.equals(req.params.id))[0]
-    res.render('jokes/editComment', {
-      joke, 
-      comment,
-      title: 'Edit Comment',
+  let userID
+  
+  try {
+    userID = req.session.passport.user
+  } catch (error) {
+
+    res.redirect('/')
+  }
+
+  User.findById(userID, function (error, user) {
+    Joke.findById(req.params.jokeId, function (error, joke) {
+      const comment = joke.comments.filter(comment=>comment._id.equals(req.params.id))[0]
+      res.render('jokes/editComment', {
+        joke, 
+        comment,
+        title: 'Edit Comment',
+        user,
+      })
     })
   })
 }
