@@ -6,7 +6,8 @@
 ### Deployed app: https://jokes93.herokuapp.com/
 ### Trello planning: https://trello.com/b/E267sCPg/sei-unit-2-project
 
-### Landing Page: ![Imgur](https://i.imgur.com/jJLzogn.png)
+### Landing page: ![Imgur](https://i.imgur.com/jJLzogn.png)
+### Show a single joke screen: ![Imgur](https://i.imgur.com/z3BEM2U.png)
 
 <br>
 
