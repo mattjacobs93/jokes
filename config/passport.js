@@ -18,12 +18,10 @@ passport.use(
         if (user) {
           return done(null, user)
         } else {
-          // we have a new student via OAuth!
           const newProfile = new Profile({
             name: profile.displayName,
             avatar: profile.photos[0].value,
-          })
-          // Build the user from 
+          }) 
           const newUser = new User({
             email: profile.emails[0].value,
             googleId: profile.id,
@@ -34,8 +32,6 @@ passport.use(
           })
           newUser.save(function (err) {
             if (err) {
-              // Something went wrong while making a user - delete the profile
-              // we just created to prevent orphan profiles.
               Profile.findByIdAndDelete(newProfile._id)
               return done(err)
             }

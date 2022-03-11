@@ -51,8 +51,6 @@ nav {
   grid-template-rows: 1fr;
   flex-direction: row;
   background-color: greenyellow;
-  /* grid-column: 1/ 12;
-  grid-row: 1 / 2; */
   grid-area: nav !important;
   justify-content: center;
   align-items: center;

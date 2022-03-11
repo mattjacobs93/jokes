@@ -3,7 +3,7 @@ import * as jokesCtrl from '../controllers/jokes.js'
 const router = Router()
 
 
-/* GET users listing. */
+/* GET jokes listing. */
 router.get('/', jokesCtrl.index)
 router.get('/new', jokesCtrl.new)
 router.get('/:id', jokesCtrl.show)

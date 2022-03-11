@@ -3,20 +3,15 @@
 <body>
   <%- include('../partials/nav') %>
   <div class="show-joke-div">
-
     <div class="joke-container">
         <h1 class="joke-title"><%=joke.title%></h1>
-
         <p class="joke-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=joke.text%></p>
-      
     <%if (profile._id.equals(joke.authorObj._id)) {%>
       <div class="edit-block">      
         <form class="joke-edit-form" action="/jokes/<%=joke._id%>/edit" method="GET">
           <button type="submit" class="btn btn-secondary">edit</button>
         </form>
       </div>
-
-
       <div class="delete-block">
         <form class="joke-delete-form" action="/jokes/<%=joke._id%>?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-secondary">delete</button>
@@ -24,9 +19,6 @@
       </div>
     <%}%>
     </div>
-
-
-
       <hr>
       <form action="/jokes/<%=joke._id%>/comments" method="POST">
         <label for="text"> 
@@ -39,27 +31,17 @@
       <button type="submit" class="btn btn-info">Submit</button>
     </form>
     <hr>
-
-
-
     <br>
-    
     <div class="comment-div">
       <h1 style="text-align:center;">Comments:</h1>
         <%joke.comments.forEach((comment,idx) => {%>
           <div class="individual-comment-div">
-
             <p class="comment-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=comment.text%></p>
-
             <% if (comment.author) { %>
               <p class="comment-author">-By: <%=comment.author%></p>
             <% } else {%>
               <p class="comment-author">-By: Anonymous</p>
               <% }%>
-
-
-
-
             <% if (comment && comment.authorProfile && profile._id.equals(comment.authorProfile)) {%>
             <div class="commment-forms">
               <form id="edit-comment-form-<%-idx%>" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>" method="GET" style="display:inline">
@@ -71,7 +53,6 @@
               </form>
             </div>
             <%}%>
-
           </div>
       <%})%>
     </div>

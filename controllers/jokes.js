@@ -1,6 +1,5 @@
 import {Joke} from '../models/joke.js'
 import { User } from '../models/user.js'
-import { Profile } from '../models/profile.js'
 import * as commentsFile from '../models/comment.js' 
 
 
@@ -86,7 +85,6 @@ function createComment (req, res) {
       req.body['authorProfile'] = user.profile._id
       joke.comments.push(req.body)
       joke.save(function (error) {
-        console.log('about to redirect, here is joke:' , joke)
         res.redirect(`/jokes/${joke._id}`)
       })
     })
