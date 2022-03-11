@@ -17,15 +17,13 @@ function index (req,res) {
     if (!user || !user.profile || !user.profile.username) {
       res.redirect('/profiles/new')
     } else {
-      user.populate('profile',function (error, userPop) {
-        console.log(userPop)
         Joke.find({}, function (error,jokes) {
           res.render('jokes/index', {
             jokes,
             title: 'All Jokes',
             user,
-          })
-        }) 
+            profile: user.profile,
+        })
       })
     }
   })
@@ -45,13 +43,17 @@ function newJoke (req, res) {
     res.render('jokes/new', {
       title: 'New Joke',
       user,
+      profile: user.profile,
     })
   })
 }
 
 function create (req, res) {
-  Joke.create(req.body,function(error){
-    res.redirect('/jokes')
+  User.findById(req.session.passport.user,function (error, user) {
+    req.body['authorObj'] = user.profile
+    Joke.create(req.body,function(error){
+      res.redirect('/jokes')
+    })
   })
 }
 
@@ -71,6 +73,7 @@ function show(req, res) {
         joke,
         title: 'Joke', 
         user,
+        profile:user.profile,
       })
     })
   })
@@ -78,12 +81,16 @@ function show(req, res) {
 
 function createComment (req, res) {
   Joke.findById(req.params.id, function(error,joke) {
-    joke.comments.push(req.body)
-    joke.save(function (error) {
-      res.redirect(`/jokes/${joke._id}`)
+    User.findById(req.session.passport.user, function (error, user) {
+      req.body['author'] = user.profile.username
+      req.body['authorProfile'] = user.profile._id
+      joke.comments.push(req.body)
+      joke.save(function (error) {
+        console.log('about to redirect, here is joke:' , joke)
+        res.redirect(`/jokes/${joke._id}`)
+      })
     })
   })
-
 }
 
 function deleteJoke (req, res) {
@@ -107,6 +114,7 @@ function edit (req, res) {
         joke,
         title: 'Edit Joke',
         user,
+        profile: user.profile
       })
     })
   })
@@ -148,6 +156,7 @@ function editComment (req, res) {
         comment,
         title: 'Edit Comment',
         user,
+        profile: user.profile,
       })
     })
   })

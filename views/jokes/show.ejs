@@ -9,19 +9,20 @@
 
         <p class="joke-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=joke.text%></p>
       
-    <div class="edit-block">      
-      <form class="joke-edit-form" action="/jokes/<%=joke._id%>/edit" method="GET">
-        <button type="submit" class="btn btn-secondary">edit</button>
-      </form>
-    </div>
+    <%if (profile._id.equals(joke.authorObj._id)) {%>
+      <div class="edit-block">      
+        <form class="joke-edit-form" action="/jokes/<%=joke._id%>/edit" method="GET">
+          <button type="submit" class="btn btn-secondary">edit</button>
+        </form>
+      </div>
 
 
-    <div class="delete-block">
-      <form class="joke-delete-form" action="/jokes/<%=joke._id%>?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-secondary">delete</button>
-      </form>
-    </div>
-
+      <div class="delete-block">
+        <form class="joke-delete-form" action="/jokes/<%=joke._id%>?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-secondary">delete</button>
+        </form>
+      </div>
+    <%}%>
     </div>
 
 
@@ -59,7 +60,7 @@
 
 
 
-            
+            <% if (comment && comment.authorProfile && profile._id.equals(comment.authorProfile)) {%>
             <div class="commment-forms">
               <form id="edit-comment-form-<%-idx%>" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>" method="GET" style="display:inline">
                 <a href="#" onclick="document.getElementById('edit-comment-form-<%-idx%>').submit()">edit</a>
@@ -69,6 +70,7 @@
                 <a href="#" onclick="document.getElementById('delete-comment-form-<%-idx%>').submit()">delete</a>
               </form>
             </div>
+            <%}%>
 
           </div>
       <%})%>

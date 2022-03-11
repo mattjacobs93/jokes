@@ -2,7 +2,8 @@ import mongoose from 'mongoose'
 
 const commentSchema = new mongoose.Schema({
   text: String,
-  author:{type: mongoose.Schema.Types.ObjectId, ref: 'Profile'},
+  author:String,
+  authorProfile:{type: mongoose.Schema.Types.ObjectId, ref: 'Profile'},
   joke: {type: mongoose.Schema.Types.ObjectId, ref: 'Joke'},
 }, {
   timestamps: true
