@@ -44,21 +44,34 @@
     <br>
     
     <div class="comment-div">
-    <h1 style="text-align:center;">Comments:</h1>
-    <ul>
-    <%joke.comments.forEach(comment => {%>
-      <li>
-        <%=comment.text%>
-        <form id="edit-comment-form" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>" method="GET" style="display:inline">
-          <a href="#" onclick="document.getElementById('edit-comment-form').submit()">edit</a>
-        </form>
+      <h1 style="text-align:center;">Comments:</h1>
+        <%joke.comments.forEach((comment,idx) => {%>
+          <div class="individual-comment-div">
 
-        <form id="delete-comment-form" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST" style="display:inline">
-          <a href="#" onclick="document.getElementById('delete-comment-form').submit()">delete</a>
-        </form>
-      </li>   
-    <%})%>
-    </ul>
+            <p class="comment-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=comment.text%></p>
+
+            <% if (comment.author) { %>
+              <p class="comment-author">-By: <%=comment.author%></p>
+            <% } else {%>
+              <p class="comment-author">-By: Anonymous</p>
+              <% }%>
+
+
+
+
+            
+            <div class="commment-forms">
+              <form id="edit-comment-form-<%-idx%>" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>" method="GET" style="display:inline">
+                <a href="#" onclick="document.getElementById('edit-comment-form-<%-idx%>').submit()">edit</a>
+              </form>
+
+              <form id="delete-comment-form-<%-idx%>" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST" style="display:inline">
+                <a href="#" onclick="document.getElementById('delete-comment-form-<%-idx%>').submit()">delete</a>
+              </form>
+            </div>
+
+          </div>
+      <%})%>
     </div>
 
 

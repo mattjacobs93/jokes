@@ -2,20 +2,25 @@
 </head>
 <body>
   <%- include('../partials/nav') %>
-  <form action="/jokes" method="POST">
-    <label for="title">
-      Title: 
-      <input type="text" name="title" placeholder="type title here...">
-    </label>
-    <br>
-    <br>
-    <label for="text">Please type your joke here:</label>
-    <br>
-    <textarea name="text" placeholder="type joke here...">
 
-    </textarea>
-    <br>
-    <br>
-    <button type="submit">submit</button>
-  </form>
+  <div class="new-joke-div">
+    <h1>New Joke:</h1>
+    <hr>
+    <form action="/jokes" method="POST">
+      <label for="title">
+        <h4>Title:</h4> 
+        <input type="text" name="title" placeholder="type title here...">
+      </label>
+      <br>
+      <br>
+      <label for="text"><h4>Please type your joke here:</h4></label>
+      <br>
+      <textarea name="text" placeholder="type joke here...">
+
+      </textarea>
+      <br>
+      <br>
+      <button type="submit">submit</button>
+    </form>
+  </div>
   <%-include('../partials/footer.ejs')%>

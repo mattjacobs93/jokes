@@ -18,7 +18,7 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   grid-template-columns: repeat(12,1fr);
-  grid-template-rows: repeat(12,1fr);
+  grid-template-rows: 10vh repeat(11,1fr);
   grid-template-areas: 
   "nav nav nav nav nav nav nav nav nav nav nav nav"
   "page page page page page page page page page page page page"
@@ -139,4 +139,59 @@ nav {
 .comment-div {
   text-align: left;
   list-style-type: none;
+}
+
+.individual-comment-div {
+  border: 3px solid black;
+  border-radius: 7px;
+  margin: 5px;
+  height: 10vh;
+  background-color: grey;
+  display: grid;
+  grid-template-rows: 8fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "text"
+    "author"
+    "forms"
+  ;
+
+  justify-content: right;
+  align-items: center;
+}
+
+.edit-comment-form {
+  justify-self: right;
+}
+
+.comment-forms {
+  grid-area: forms;
+  justify-content: right;
+  text-align: right;
+  right: 0;
+  background-color: white;
+  display: grid;
+}
+
+.comment-text {
+  grid-area: text;
+  align-self: center;
+  justify-self: flex-start;
+  text-align: center;
+}
+
+.comment-author {
+  grid-area: author;
+  align-self: center;
+  text-align: center;
+}
+
+.new-joke-div {
+  grid-area: page;
+  margin: 0 0 20vh 0;
+}
+
+.new-joke-div textarea {
+  height: 30vh;
+  width: 30vw;
 }
