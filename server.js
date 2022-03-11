@@ -7,14 +7,18 @@ import { fileURLToPath } from 'url'
 import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
+
+
+import('./config/database.js')
+import('./config/passport.js')
+
+
 // import routers
 import { router as indexRouter } from './routes/index.js'
 import { router as jokesRouter } from './routes/jokes.js'
 import { router as authRouter } from './routes/auth.js'
 
 
-import('./config/database.js')
-import('./config/passport.js')
 
 // set up app
 const app = express()
