@@ -13,14 +13,18 @@ function index (req,res) {
     res.redirect('/')
   }
 
-  User.findById(userID,function (error, user) {    
-    Joke.find({}, function (error,jokes) {
-      res.render('jokes/index', {
-        jokes,
-        title: 'All Jokes',
-        user,
-      })
-    }) 
+  User.findById(userID,function (error, user) {   
+    if (!user.profile) {
+      res.redirect('/profiles/new')
+    } else {
+      Joke.find({}, function (error,jokes) {
+        res.render('jokes/index', {
+          jokes,
+          title: 'All Jokes',
+          user,
+        })
+      }) 
+    }
   })
 }
 

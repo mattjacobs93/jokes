@@ -209,3 +209,7 @@ nav {
   display: grid;
   grid-area: page;
 }
+
+.new-profile-div {
+  grid-area: page;
+}

@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import createError from 'http-errors'
 import session from 'express-session'
-import express from 'express'
+import express, { application } from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import logger from 'morgan'
@@ -17,6 +17,7 @@ import('./config/passport.js')
 import { router as indexRouter } from './routes/index.js'
 import { router as jokesRouter } from './routes/jokes.js'
 import { router as authRouter } from './routes/auth.js'
+import { router as profilesRouter} from './routes/profiles.js'
 
 
 
@@ -59,6 +60,7 @@ app.use(methodOverride('_method'))
 app.use('/', indexRouter)
 app.use('/jokes', jokesRouter)
 app.use('/auth', authRouter)
+app.use('/profiles', profilesRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

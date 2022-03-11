@@ -1,0 +1,15 @@
+<%- include('../partials/html-head') %>
+</head>
+<body>
+  <%- include('../partials/nav') %>
+    <div class="new-profile-div">
+      <form action="/profiles" method="POST">
+        <h1>
+          Type in a new username for your profile:
+        </h1>
+
+        <input type="text" name="username" placeholder="username...">
+        <button type="submit">submit</button>
+      </form>
+    </div>
+  <%-include('../partials/footer.ejs')%>
