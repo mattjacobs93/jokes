@@ -5,13 +5,16 @@ function index (req,res) {
   //console.log('sanity check index ctrl')
   Joke.find({}, function (error,jokes) {
     res.render('jokes/index', {
-      jokes
+      jokes,
+      title: 'All Jokes',
     })
   })
 }
 
 function newJoke (req, res) {
-  res.render('jokes/new')
+  res.render('jokes/new', {
+    title: 'New Joke'
+  })
 }
 
 function create (req, res) {
@@ -24,7 +27,10 @@ function create (req, res) {
 
 function show(req, res) {
   Joke.findById(req.params.id, function (error, joke) {
-    res.render('jokes/show', {joke})
+    res.render('jokes/show', {
+      joke,
+      title: 'Joke', 
+    })
   })
 }
 
@@ -45,9 +51,11 @@ function deleteJoke (req, res) {
 }
 
 function edit (req, res) {
-  console.log('edit joke')
   Joke.findById(req.params.id, function (error, joke) {
-      res.render('jokes/edit', {joke})
+      res.render('jokes/edit', {
+        joke,
+        title: 'Edit Joke',
+      })
   })
 }
 
@@ -58,7 +66,6 @@ function update (req, res) {
 }
 
 function deleteComment (req, res) {
-  console.log('delete comment', req.params)
    Joke.findById(req.params.jokeId, function (error, joke) {
      joke.comments = joke.comments.filter(comment=>!comment._id.equals(req.params.id))
      joke.save(function (error) {
@@ -73,7 +80,11 @@ function deleteComment (req, res) {
 function editComment (req, res) {
   Joke.findById(req.params.jokeId, function (error, joke) {
     const comment = joke.comments.filter(comment=>comment._id.equals(req.params.id))[0]
-    res.render('jokes/editComment', {joke, comment})
+    res.render('jokes/editComment', {
+      joke, 
+      comment,
+      title: 'Edit Comment',
+    })
   })
 }
 
