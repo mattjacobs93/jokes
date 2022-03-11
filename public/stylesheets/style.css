@@ -7,16 +7,36 @@ html {
 
 
 body {
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: grid;
   border: inherit;
   box-sizing: inherit;
   margin: inherit;
   padding: inherit;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   grid-template-columns: repeat(12,1fr);
   grid-template-rows: repeat(12,1fr);
+  grid-template-areas: 
+  "nav nav nav nav nav nav nav nav nav nav nav nav"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  "page page page page page page page page page page page page"
+  ;
+  background-color: green;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 
@@ -31,13 +51,14 @@ nav {
   grid-template-rows: 1fr;
   flex-direction: row;
   background-color: greenyellow;
-  grid-column: 1/ 13;
-  grid-row: 1/2;
+  /* grid-column: 1/ 12;
+  grid-row: 1 / 2; */
+  grid-area: nav !important;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin: 0;
-
+  height: 100%;
 }
 
 .all-jokes-link {
@@ -50,4 +71,72 @@ nav {
 
 .nav-title {
   grid-column: 6 / 9;
+}
+
+
+
+.joke-list {
+  grid-area: page;
+}
+
+.show-joke-div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-area: page;
+
+}
+
+.joke-container {
+  margin-top: 5vh;
+  background-color: white;
+  height: 30vh;
+  width: 30vw;
+  border-radius: 7px;
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-areas:
+    "title title"
+    "text text"
+    "edit delete"
+  ;
+}
+
+
+.joke-title {
+  font-size: 2.5rem;
+  text-decoration: underline;
+  grid-area: title;
+}
+
+.joke-text {
+  text-align: left;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  grid-area:text;
+}
+
+.delete-block {
+  grid-area:delete;
+  display: grid;
+  justify-content: left;
+  align-self: flex-end;
+}
+
+.edit-block {
+  grid-area: edit;
+  display: grid;
+  justify-content: right;
+  align-self: flex-end;
+}
+
+.joke-container button {
+  width: 5vw;
+}
+
+.comment-div {
+  text-align: left;
+  list-style-type: none;
 }

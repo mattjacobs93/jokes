@@ -2,12 +2,14 @@
 </head>
 <body>
   <%- include('../partials/nav') %>
-  <ul>
-    <%let i = 1%>
-  <%jokes.forEach(joke => {%>
-    <li>
-      <a href="jokes/<%=joke._id%>"><%= `${i++}. ${joke.title}`%></a>
-    </li>
-  <%})%>
-  </ul>
+    <div class="joke-list">
+      <ul>
+        <%let i = 1%>
+      <%jokes.forEach(joke => {%>
+       <li>
+          <a href="jokes/<%=joke._id%>"><%= `${i++}. ${joke.title}`%></a>
+       </li>
+      <%})%>
+      </ul>
+    </div>
   <%-include('../partials/footer.ejs')%>
