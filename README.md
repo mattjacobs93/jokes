@@ -4,7 +4,7 @@
 
 # Getting Started:
 ### Deployed app: https://jokes93.herokuapp.com/
-### trello planning: https://trello.com/b/E267sCPg/sei-unit-2-project
+### Trello planning: https://trello.com/b/E267sCPg/sei-unit-2-project
 
 ### Landing Page: ![Imgur](https://i.imgur.com/jJLzogn.png)
 
