@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
+import { profileSchema } from './profile.js'
 
 const userSchema = new mongoose.Schema({
   email: String,
   googleId: String,
-  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
+  profile: profileSchema,
 }, {
   timestamps: true,
 })

@@ -15,9 +15,9 @@ function create (req, res) {
     } catch (error) {
       res.redirect('/')
     }
-    console.log('user id testing: ', userID)
+  
     User.findById(userID, function (error, user) {
-      user['profile'] = profile._id
+      user['profile'] = profile
       user.save()
       res.redirect('/jokes')
     })

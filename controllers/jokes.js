@@ -14,16 +14,19 @@ function index (req,res) {
   }
 
   User.findById(userID,function (error, user) {   
-    if (!user.profile) {
+    if (!user || !user.profile || !user.profile.username) {
       res.redirect('/profiles/new')
     } else {
-      Joke.find({}, function (error,jokes) {
-        res.render('jokes/index', {
-          jokes,
-          title: 'All Jokes',
-          user,
-        })
-      }) 
+      user.populate('profile',function (error, userPop) {
+        console.log(userPop)
+        Joke.find({}, function (error,jokes) {
+          res.render('jokes/index', {
+            jokes,
+            title: 'All Jokes',
+            user,
+          })
+        }) 
+      })
     }
   })
 }

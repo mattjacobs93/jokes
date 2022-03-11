@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 const profileSchema = new mongoose.Schema({
+  username: String,
   name: String,
   avatar: String,
 }, {
@@ -10,5 +11,6 @@ const profileSchema = new mongoose.Schema({
 const Profile = mongoose.model('Profile', profileSchema)
 
 export {
-  Profile
+  Profile,
+  profileSchema
 }
