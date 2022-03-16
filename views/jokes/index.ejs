@@ -1,16 +1,18 @@
 <%- include('../partials/html-head')%>   
 </head>
-<body>
+<body class="normal-body">
   <%- include('../partials/nav') %>
-    <div class="joke-list">
-      <h1 style="text-decoration:underline;">Joke List</h1>
-      <ul class="ul-joke"> 
-        <%let i = 1%>
-      <%jokes.forEach(joke => {%>
-       <li class="'li-joke">
+    <div class="jokes-section">
+      <div class="cork-board">
+          <ul class="ul-joke">
+            <li style="text-align: center;"><h1 style="text-decoration:underline;">Joke List</h1></li> 
+          <%let i = 1%>
+          <%jokes.forEach(joke => {%>
+          <li class="'li-joke" style="margin: 0 0 0 30%">
           <a href="jokes/<%=joke._id%>"><%= `${i++}. ${joke.title}`%></a>
-       </li>
-      <%})%>
-      </ul>
+          </li>
+          <%})%>
+          </ul>
+      </div>
     </div>
   <%-include('../partials/footer.ejs')%>

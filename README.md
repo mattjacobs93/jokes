@@ -26,4 +26,5 @@
 ### favicon from: https://favicon.io/emoji-favicons/grinning-squinting-face
 ### google signin button from: https://developers.google.com/identity/branding-guidelines#matching
 ### logo made from: https://www.textgiraffe.com/logos/boogie/?text=jokes&submit=Download
+### cork board asset from: http://clipart-library.com/clipart/bulletin-board-clipart_15.htm
 
