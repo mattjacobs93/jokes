@@ -6,7 +6,7 @@
     <form action="/jokes/<%=joke._id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
       <label for="text"> <h1>Edit Comment</h1>
         <br>
-        <textarea min="1" name="text" id="new-comment-text" cols="50" rows="1"><%=comment.text%></textarea>
+        <textarea required name="text" id="new-comment-text" cols="50" rows="1"><%=comment.text%></textarea>
       </label>
       <br>
       <br>
