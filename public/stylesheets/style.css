@@ -63,6 +63,13 @@ nav {
   grid-column: 12 / span 1;
 }
 
+.small-logo {
+  grid-column: 6 / span 3;
+  height: 100%;
+  width: 60%;
+  margin: 0 auto;
+}
+
 .new-jokes-link {
   grid-column: 13 / span 1;
 }
