@@ -40,9 +40,6 @@ body {
 }
 
 .show-joke-page {
-
- /* min-height: 100vh;
- min-width: 100vw; */
  min-height: min-content;
  min-width: min-content;
 }
@@ -122,7 +119,6 @@ nav {
 }
 
 .show-joke-div {
-  /* margin-top: 500px; */
   display: grid;
   justify-content: center;
   align-items: center;
@@ -276,8 +272,6 @@ nav {
 }
 
 .home-page {
-  /* max-height: 85vh;
-  max-width: 95vw; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
