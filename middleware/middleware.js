@@ -7,6 +7,16 @@ function isLoggedIn (req,res,next) {
   res.redirect('/auth/google')
 }
 
-export {
-  isLoggedIn
-}
+  
+
+  function passUserToView(req, res, next) {
+    res.locals.user = req.user ? req.user : null
+    next()
+  }
+
+  
+  export {
+    passUserToView,
+    isLoggedIn
+  }
+

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url'
 import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
-import { isLoggedIn } from './middleware/middleware.js'
+import { passUserToView, isLoggedIn } from './middleware/middleware.js'
 
 import('./config/database.js')
 import('./config/passport.js')
@@ -47,6 +47,7 @@ app.use(
 )
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(passUserToView)
 
 app.use(
   express.static(

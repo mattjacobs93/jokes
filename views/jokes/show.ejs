@@ -6,7 +6,7 @@
     <div class="joke-container">
         <h1 class="joke-title"><%=joke.title%></h1>
         <p class="joke-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=joke.text%></p>
-      <%if (profile._id.equals(joke.authorObj._id)) {%>
+      <%if (user.profile._id.equals(joke.authorObj._id)) {%>
         <div class="edit-block">      
           <form class="joke-edit-form" action="/jokes/<%=joke._id%>/edit" method="GET">
           <button type="submit" class="btn btn-secondary">edit</button>
@@ -42,7 +42,7 @@
           <% } else {%>
             <p class="comment-author">-By: Anonymous</p>
             <% }%>
-          <% if (comment && comment.authorProfile && profile._id.equals(comment.authorProfile)) {%>
+          <% if (comment && comment.authorProfile && user.profile._id.equals(comment.authorProfile)) {%>
             <div class="commment-forms">
               <form id="edit-comment-form-<%-idx%>" action="/jokes/<%=joke._id%>/comments/<%=comment._id%>" method="GET" style="display:inline">
                 <a href="#" onclick="document.getElementById('edit-comment-form-<%-idx%>').submit()">edit</a>

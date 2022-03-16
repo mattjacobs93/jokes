@@ -20,8 +20,6 @@ function index (req,res) {
           res.render('jokes/index', {
             jokes,
             title: 'All Jokes',
-            user,
-            profile: user.profile,
         })
       })
     }
@@ -41,8 +39,6 @@ function newJoke (req, res) {
   User.findById(userID,function (error, user) {    
     res.render('jokes/new', {
       title: 'New Joke',
-      user,
-      profile: user.profile,
     })
   })
 }
@@ -71,8 +67,6 @@ function show(req, res) {
       res.render('jokes/show', {
         joke,
         title: 'Joke', 
-        user,
-        profile:user.profile,
       })
     })
   })
@@ -111,8 +105,6 @@ function edit (req, res) {
       res.render('jokes/edit', {
         joke,
         title: 'Edit Joke',
-        user,
-        profile: user.profile
       })
     })
   })
@@ -153,8 +145,6 @@ function editComment (req, res) {
         joke, 
         comment,
         title: 'Edit Comment',
-        user,
-        profile: user.profile,
       })
     })
   })
