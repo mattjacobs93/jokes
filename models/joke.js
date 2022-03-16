@@ -3,8 +3,8 @@ import * as commentFIle from './comment.js'
 import { profileSchema } from './profile.js'
 
 const jokeSchema = new mongoose.Schema({
-  title:String,
-  text: String,
+  title:{type: String, required: true, minlength: 1},
+  text: {type: String, required: true, minlength: 1},
   author:{type: mongoose.Schema.Types.ObjectId, ref: 'Profile'},
   authorObj:profileSchema,
   comments: {type: [commentFIle.commentSchema]},
