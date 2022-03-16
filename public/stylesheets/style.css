@@ -216,3 +216,40 @@ nav {
   list-style-type: none;
   font-size: 2rem;
 }
+
+.google-signin-button {
+  background-color: white;
+  color: #2d2d2d;
+  border: 1px solid #2d2d2d;
+  border-radius: 7px;
+
+}
+
+.home-page {
+  height: 95vh;
+  width: 95vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr;
+  grid-template-areas: 
+  "logo"
+  "signin"
+  ;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.large-logo {
+  grid-area: logo;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.google-auth-link {
+  grid-area: signin;
+
+}
